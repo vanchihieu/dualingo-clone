@@ -33,8 +33,7 @@ export default function MarketingPage() {
             <SignedOut>
               <SignUpButton
                 mode="modal"
-                signInFallbackRedirectUrl={"/learn"}
-                signInForceRedirectUrl={"/learn"}
+                forceRedirectUrl={"/learn"}
               >
                 <Button size="lg" variant="secondary" className="w-full">
                   Get Started
@@ -43,8 +42,7 @@ export default function MarketingPage() {
 
               <SignInButton
                 mode="modal"
-                signUpFallbackRedirectUrl={"/learn"}
-                signUpForceRedirectUrl={"/learn"}
+                forceRedirectUrl={"/learn"}
               >
                 <Button size="lg" variant="primaryOutline" className="w-full">
                   I already have an account
