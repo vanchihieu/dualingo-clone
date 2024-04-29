@@ -26,12 +26,8 @@ export const LessonButton = ({
   current,
   percentage,
 }: LessonButtonProps) => {
-  console.log("🚀 ~ index:", index);
-
   const cycleLength = 8;
   const cycleIndex = index % cycleLength;
-  console.log("🚀 ~ cycleIndex:", cycleIndex);
-
 
   let indentationLevel;
 
