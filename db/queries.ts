@@ -12,6 +12,9 @@ export const getCourses = cache(async () => {
   return data;
 });
 
+/**
+ * câu truy vấn này lặp qua danh sách các đơn vị và bài học trong đó, kiểm tra trạng thái hoàn thành của từng bài học dựa trên trạng thái hoàn thành của các thách thức liên quan. Kết quả là một phiên bản mới của dữ liệu với trạng thái hoàn thành của từng bài học đã được tính toán và thêm vào.
+ */
 export const getUnits = cache(async () => {
   const { userId } = auth();
   const userProgress = await getUserProgress();
@@ -43,6 +46,7 @@ export const getUnits = cache(async () => {
       if (lesson.challenges.length === 0)
         return { ...lesson, completed: false };
 
+      // Biến allCompletedChallenges sẽ được gán giá trị true nếu tất cả các thách thức đã hoàn thành và false nếu có ít nhất một thách thức chưa hoàn thành.
       const allCompletedChallenges = lesson.challenges.every((challenge) => {
         return (
           challenge.challengeProgress &&

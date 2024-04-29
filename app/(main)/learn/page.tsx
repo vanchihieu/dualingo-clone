@@ -6,6 +6,7 @@ import { StickyWrapper } from "@/components/sticky-wrapper";
 import { UserProgress } from "@/components/user-progress";
 import { getUnits, getUserProgress } from "@/db/queries";
 import { redirect } from "next/navigation";
+import { Unit } from "@/app/(main)/learn/unit";
 
 const LearnPage = async () => {
   const userProgressData = getUserProgress();
@@ -30,8 +31,16 @@ const LearnPage = async () => {
       <FeedWrapper>
         <Header title={userProgress.activeCourse.title} />
         {units.map((unit) => (
-          <div key={unit.id}>
-            {JSON.stringify(unit)}
+          <div key={unit.id} className="mb-10">
+            <Unit
+              id={unit.id}
+              order={unit.order}
+              description={unit.description}
+              title={unit.title}
+              lessons={unit.lessons}
+              activeLesson={undefined}
+              activeLessonPercentage={58}
+            />
           </div>
         ))}
       </FeedWrapper>
