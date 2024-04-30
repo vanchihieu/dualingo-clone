@@ -72,6 +72,10 @@ export const getUnits = cache(async () => {
 
 /**
  *  đoạn mã này được sử dụng để lấy thông tin về tiến trình của người dùng trong khóa học đang hoạt động. Nó trả về bài học đầu tiên chưa hoàn thành và ID của bài học đó.
+ * return {
+ * activeLesson: firstUncompletedLesson,
+ * activeLessonId: firstUncompletedLesson?.id
+ * };
  */
 export const getCourseProgress = cache(async () => {
   const { userId } = auth();
