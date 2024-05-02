@@ -6,6 +6,7 @@ import { Header } from "./header";
 import { challengeOptions, challenges } from "@/db/schema";
 import { QuestionBubble } from "@/app/lesson/question-bubble";
 import { Challenge } from "@/app/lesson/challenge";
+import { Footer } from "@/app/lesson/footer";
 
 type QuizProps = {
   initialPercentage: number;
@@ -37,8 +38,17 @@ export const Quiz = ({
     return uncompletedIndex === -1 ? 0 : uncompletedIndex;
   });
 
+  const [selectedOption, setSelectedOption] = useState<number>();
+  const [status, setStatus] = useState<"none" | "wrong" | "correct">("none");
+
   const challenge = challenges[activeIndex];
   const options = challenge?.challengeOptions ?? [];
+
+  const onSelect = (id: number) => {
+    if (status !== "none") return;
+
+    setSelectedOption(id);
+  };
 
   const title =
     challenge.type === "ASSIST"
@@ -67,9 +77,9 @@ export const Quiz = ({
 
               <Challenge
                 options={options}
-                onSelect={()=>{}}
-                status={"none"}
-                selectedOption={3}
+                onSelect={onSelect}
+                status={status}
+                selectedOption={selectedOption}
                 disabled={false}
                 type={challenge.type}
               />
@@ -77,6 +87,7 @@ export const Quiz = ({
           </div>
         </div>
       </div>
+      <Footer disabled={!selectedOption} status={status} onCheck={() => {}} />
     </>
   );
 };

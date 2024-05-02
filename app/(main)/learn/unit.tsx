@@ -26,6 +26,8 @@ export const Unit = ({
   activeLesson,
   activeLessonPercentage,
 }: UnitProps) => {
+  console.log("🚀 ~ lessons:", lessons);
+
   return (
     <>
       <UnitBanner title={title} description={description} />

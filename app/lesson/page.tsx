@@ -14,6 +14,8 @@ const LessonPage = async () => {
     userProgressData,
     // userSubscriptionData,
   ]);
+  console.log("🚀 ~ LessonPage ~ lesson:", lesson);
+
 
   if (!lesson || !userProgress) return redirect("/learn");
 

@@ -122,6 +122,9 @@ export const getCourseProgress = cache(async () => {
   };
 });
 
+/**
+ * đoạn mã này được sử dụng để lấy thông tin về bài học đang hoạt động. Nó trả về danh sách thách thức trong bài học đó, với trạng thái hoàn thành của từng thách thức đã được tính toán.
+ */
 export const getLesson = cache(async (id?: number) => {
   const { userId } = auth();
 
